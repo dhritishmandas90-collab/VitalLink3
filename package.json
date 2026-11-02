@@ -1,0 +1,9 @@
+{
+  "name": "vitallink-cloudflare",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "deploy": "npx wrangler deploy",
+    "dev": "npx wrangler dev"
+  }
+}

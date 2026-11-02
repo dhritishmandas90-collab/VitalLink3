@@ -1,0 +1,34 @@
+VitalLink for Cloudflare Workers
+
+1. Extract this ZIP and upload its contents to a GitHub repository.
+2. In Cloudflare, open Workers & Pages and create a Worker connected to that repository.
+3. Leave the build command empty. Use npx wrangler deploy as the deploy command.
+4. Deploy once to get your production workers.dev website address.
+5. Open your Worker's Settings and find Variables and Secrets.
+6. Add these three settings.
+
+APP_ORIGIN
+Set this to your complete production HTTPS website address, with no slash at the end.
+
+SUPABASE_ANON_KEY
+Copy the legacy anon public key from your existing Supabase project.
+
+SUPABASE_SERVICE_ROLE_KEY
+Copy the legacy service_role key from Supabase. Save it as a Secret.
+
+The Supabase project URL is already set in wrangler.jsonc.
+Keep both API keys in Cloudflare settings. Keep the service_role key private.
+
+7. Apply the settings and redeploy.
+8. Open your website followed by /readyz.
+   {"status":"ready"} confirms database access.
+9. In Supabase, open Authentication > URL Configuration.
+   Set Site URL to your new Cloudflare HTTPS website address and save.
+10. Open VitalLink and use Set up administrator password to choose your password privately.
+
+Command-line alternative
+Run npm run deploy in this folder.
+Add each API key using npx wrangler secret put followed by its variable name.
+Set APP_ORIGIN in wrangler.jsonc or in Cloudflare settings before testing sign-in.
+
+This package uses your existing Supabase database and owner account.
